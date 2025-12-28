@@ -22,13 +22,22 @@ export default function Navigation() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
+    updateFavicon(savedTheme);
   }, []);
+
+  const updateFavicon = (currentTheme: string) => {
+    const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (link) {
+      link.href = currentTheme === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg';
+    }
+  };
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
+    updateFavicon(newTheme);
   };
 
   const isActive = (href: string) => {

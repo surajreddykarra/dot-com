@@ -6,6 +6,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Suraj Karra',
   description: 'Personal website and blog of Suraj Karra',
+  icons: {
+    icon: '/favicon-light.svg',
+  },
 };
 
 export default function RootLayout({
