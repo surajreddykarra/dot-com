@@ -1,0 +1,113 @@
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageSubtitle {
+  color: var(--ink-light);
+  font-size: 1.1rem;
+}
+
+.intro {
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-light);
+}
+
+.ideasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.ideaCard {
+  background: var(--paper);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  
+  /* 3D effect - bottom-left */
+  box-shadow: 
+    -4px 4px 0 var(--yellow-dark),
+    -8px 8px 0 var(--shadow-color);
+}
+
+.ideaCard:hover {
+  transform: translate(3px, -3px);
+  box-shadow: 
+    -7px 7px 0 var(--yellow-dark),
+    -11px 11px 0 var(--shadow-color);
+}
+
+.ideaHeader {
+  margin-bottom: 1rem;
+}
+
+.ideaTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+
+.ideaCategory {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ideaContent {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.ideaContent p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-light);
+  margin: 0;
+}
+
+.ideaStatus {
+  margin-top: auto;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.statusExploring {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.statusThinking {
+  background: var(--yellow-light);
+  color: var(--ink);
+}
+
+.statusParked {
+  background: var(--cream);
+  color: var(--ink-light);
+}
+
+@media (max-width: 600px) {
+  .ideasGrid {
+    grid-template-columns: 1fr;
+  }
+}

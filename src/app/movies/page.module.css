@@ -1,0 +1,99 @@
+.pageHeader {
+  margin-bottom: 3rem;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageSubtitle {
+  color: var(--ink-light);
+  font-size: 1.1rem;
+}
+
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.movieCard {
+  background: var(--paper);
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  
+  /* 3D effect - bottom-left */
+  box-shadow: 
+    -4px 4px 0 var(--yellow-dark),
+    -8px 8px 0 var(--shadow-color);
+}
+
+.movieCard:hover {
+  transform: translate(3px, -3px);
+  box-shadow: 
+    -7px 7px 0 var(--yellow-dark),
+    -11px 11px 0 var(--shadow-color);
+}
+
+.movieTitle {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.movieYear {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.movieRating {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.starFilled {
+  color: var(--yellow-dark);
+}
+
+.starEmpty {
+  color: var(--shadow-color);
+}
+
+.movieThoughts {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.watchlistBadge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: var(--yellow-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .movieGrid {
+    grid-template-columns: 1fr;
+  }
+}

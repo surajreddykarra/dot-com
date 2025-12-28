@@ -1,0 +1,36 @@
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageSubtitle {
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+.blogList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem;
+  background: var(--yellow-light);
+  border: 3px dashed var(--yellow-dark);
+  border-radius: 8px;
+}
+
+.emptyState h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.emptyState p {
+  color: var(--ink-light);
+}
