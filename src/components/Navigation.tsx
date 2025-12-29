@@ -10,6 +10,7 @@ const navItems = [
   { href: '/blog', label: 'Blogs' },
   { href: '/movies', label: 'Movies' },
   { href: '/ideas', label: 'Ideas' },
+  { href: '/travel', label: 'Travel' },
 ];
 
 export default function Navigation() {
