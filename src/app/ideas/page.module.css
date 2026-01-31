@@ -1,5 +1,15 @@
 .pageHeader {
   margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .pageTitle {
@@ -17,6 +27,8 @@
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--ink-light);
+  opacity: 0;
+  animation: fadeUp 0.5s ease-out 0.1s forwards;
 }
 
 .ideasGrid {
@@ -31,12 +43,25 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Animation initial state */
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideIn 0.5s ease-out forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.08s);
   
   /* 3D effect - bottom-left */
   box-shadow: 
     -4px 4px 0 var(--yellow-dark),
     -8px 8px 0 var(--shadow-color);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .ideaCard:hover {
@@ -109,5 +134,16 @@
 @media (max-width: 600px) {
   .ideasGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .pageHeader,
+  .intro,
+  .ideaCard {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

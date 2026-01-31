@@ -82,8 +82,12 @@ export default function MoviesPage() {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Recent Favorites</h2>
         <div className={styles.movieGrid}>
-          {movies.map((movie) => (
-            <div key={movie.id} className={styles.movieCard}>
+          {movies.map((movie, index) => (
+            <div 
+              key={movie.id} 
+              className={styles.movieCard}
+              style={{ '--card-index': index } as React.CSSProperties}
+            >
               <h3 className={styles.movieTitle}>{movie.title}</h3>
               <div className={styles.movieYear}>{movie.year}</div>
               <StarRating rating={movie.rating} />
@@ -97,7 +101,11 @@ export default function MoviesPage() {
         <h2 className={styles.sectionTitle}>Watchlist</h2>
         <div className={styles.movieGrid}>
           {watchlist.map((movie, index) => (
-            <div key={index} className={styles.movieCard}>
+            <div 
+              key={index} 
+              className={styles.movieCard}
+              style={{ '--card-index': index + movies.length } as React.CSSProperties}
+            >
               <h3 className={styles.movieTitle}>{movie.title}</h3>
               <div className={styles.movieYear}>{movie.year}</div>
               <span className={styles.watchlistBadge}>On the list</span>

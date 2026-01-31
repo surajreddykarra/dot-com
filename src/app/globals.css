@@ -91,13 +91,7 @@ body {
   min-height: 100vh;
   font-weight: 400;
   
-  /* Dotted pattern background - full page */
-  background-image: 
-    radial-gradient(var(--pattern-color) 1.5px, transparent 1.5px),
-    radial-gradient(var(--pattern-color) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
-  background-attachment: fixed;
+  /* Background handled by AnimatedBackground component */
 }
 
 /* Main container - clean, no borders */
@@ -333,4 +327,136 @@ hr {
 .hljs-variable,
 .hljs-template-variable {
   color: #e06c75;
+}
+
+/* ==========================================
+   SCROLL ANIMATIONS
+   ========================================== */
+
+/* Animation timing custom property */
+:root {
+  --animation-duration: 0.6s;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-delay: 0s;
+}
+
+/* Fade Up Animation */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 
+    opacity var(--animation-duration) var(--animation-timing),
+    transform var(--animation-duration) var(--animation-timing);
+  transition-delay: var(--animation-delay);
+}
+
+.animate-fade-up.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bounce In Animation */
+.animate-bounce-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 
+    opacity var(--animation-duration) var(--animation-timing),
+    transform var(--animation-duration) cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--animation-delay);
+}
+
+.animate-bounce-in.animate-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide Left Animation */
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: 
+    opacity var(--animation-duration) var(--animation-timing),
+    transform var(--animation-duration) var(--animation-timing);
+  transition-delay: var(--animation-delay);
+}
+
+.animate-slide-left.animate-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Pop In Animation */
+.animate-pop-in {
+  opacity: 0;
+  transform: scale(0.6) rotate(-3deg);
+  transition: 
+    opacity var(--animation-duration) var(--animation-timing),
+    transform var(--animation-duration) cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--animation-delay);
+}
+
+.animate-pop-in.animate-visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Float Animation (continuous) */
+.animate-float {
+  animation: floatBob 5s ease-in-out infinite;
+}
+
+@keyframes floatBob {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-0.5deg);
+  }
+}
+
+/* Stagger delay utility classes */
+.stagger-1 { --animation-delay: 0.1s; }
+.stagger-2 { --animation-delay: 0.2s; }
+.stagger-3 { --animation-delay: 0.3s; }
+.stagger-4 { --animation-delay: 0.4s; }
+.stagger-5 { --animation-delay: 0.5s; }
+.stagger-6 { --animation-delay: 0.6s; }
+
+/* ==========================================
+   REDUCED MOTION SUPPORT
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-up,
+  .animate-bounce-in,
+  .animate-slide-left,
+  .animate-pop-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* Pause animations when tab is hidden */
+.tab-hidden *,
+.tab-hidden *::before,
+.tab-hidden *::after {
+  animation-play-state: paused !important;
 }

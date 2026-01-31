@@ -21,7 +21,7 @@ export default function BlogPage() {
 
       {posts.length > 0 ? (
         <div className={styles.blogList}>
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <BlogCard
               key={`${post.year}-${post.month}-${post.slug}`}
               title={post.title}
@@ -30,6 +30,7 @@ export default function BlogPage() {
               month={post.month}
               slug={post.slug}
               excerpt={post.excerpt}
+              index={index}
             />
           ))}
         </div>
