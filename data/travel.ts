@@ -1,3 +1,4 @@
+// Travel data - Countries you've visited
 export type VisitStatus = 'home' | 'visited' | 'transit';
 
 export interface CountryData {
@@ -5,16 +6,18 @@ export interface CountryData {
   status: VisitStatus;
 }
 
-// You can add your countries here
+// Add your countries here using ISO 3166-1 alpha-3 codes
+// Find codes at: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
 export const visitedCountries: CountryData[] = [
-  { id: 'IND', status: 'home' },
-  { id: 'VNM', status: 'visited' }, // Vietnam
-  { id: 'JPN', status: 'visited' }, // Japan
-  { id: 'USA', status: 'visited' }, // USA
-  { id: 'MYS', status: 'transit' }, // Malaysia
-  { id: 'GBR', status: 'transit' }, // United Kingdom (London)
+  { id: 'IND', status: 'home' },      // India
+  { id: 'VNM', status: 'visited' },   // Vietnam
+  { id: 'JPN', status: 'visited' },   // Japan
+  { id: 'USA', status: 'visited' },   // USA
+  { id: 'MYS', status: 'transit' },   // Malaysia
+  { id: 'GBR', status: 'transit' },   // United Kingdom
 ];
 
+// Color configuration for map
 export const getCountryColor = (status?: VisitStatus) => {
   switch (status) {
     case 'home':
@@ -28,6 +31,7 @@ export const getCountryColor = (status?: VisitStatus) => {
   }
 };
 
+// Status labels for tooltip
 export const getStatusLabel = (status: VisitStatus) => {
   switch (status) {
     case 'home':
