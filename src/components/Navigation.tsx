@@ -17,6 +17,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const [theme, setTheme] = useState('light');
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -24,6 +25,40 @@ export default function Navigation() {
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateFavicon(savedTheme);
+
+    // Handle scroll for navbar effect
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    // Throttle scroll for performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    
+    // Handle tab visibility for animation pausing
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.body.classList.add('tab-hidden');
+      } else {
+        document.body.classList.remove('tab-hidden');
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScroll);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   const updateFavicon = (currentTheme: string) => {
@@ -49,7 +84,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
       <div className={styles.navHeader}>
         <Link href="/" className={styles.navTitle}>
           Suraj Karra
@@ -66,11 +101,12 @@ export default function Navigation() {
         )}
       </div>
       <div className={styles.navLinks}>
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <Link
             key={item.href}
             href={item.href}
             className={`${styles.navLink} ${isActive(item.href) ? styles.navLinkActive : ''}`}
+            style={{ '--animation-delay': `${index * 0.05}s` } as React.CSSProperties}
           >
             {item.label}
           </Link>

@@ -97,8 +97,12 @@ export default function IdeasPage() {
       </div>
 
       <div className={styles.ideasGrid}>
-        {ideas.map((idea) => (
-          <div key={idea.id} className={styles.ideaCard}>
+        {ideas.map((idea, index) => (
+          <div 
+            key={idea.id} 
+            className={styles.ideaCard}
+            style={{ '--card-index': index } as React.CSSProperties}
+          >
             <div className={styles.ideaHeader}>
               <div>
                 <h3 className={styles.ideaTitle}>{idea.title}</h3>

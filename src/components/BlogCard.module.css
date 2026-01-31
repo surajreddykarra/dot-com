@@ -4,13 +4,26 @@
   background: var(--paper);
   text-decoration: none;
   color: var(--ink);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 16px;
+  
+  /* Animation initial state */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardSlideUp 0.5s ease-out forwards;
+  animation-delay: var(--animation-delay, 0s);
   
   /* Clean simple shadow - bottom-left */
   box-shadow: 
     -4px 4px 0 var(--yellow-dark),
     -8px 8px 0 var(--shadow-color);
+}
+
+@keyframes cardSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .blogCard:hover {
@@ -65,5 +78,14 @@
   
   .blogTitle {
     font-size: 1.1rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .blogCard {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

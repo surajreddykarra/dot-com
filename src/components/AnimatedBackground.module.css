@@ -1,0 +1,89 @@
+.backgroundContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.dotPattern {
+  width: 100%;
+  height: 200%; /* Extra height for parallax scrolling */
+  position: absolute;
+  top: -50%;
+  left: 0;
+  will-change: transform;
+}
+
+.dotSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  fill: var(--pattern-color);
+  animation: dotRipple 4s ease-in-out infinite;
+}
+
+/* Stagger the dot animations for wave effect */
+.dot:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+/* Wave ripple animation on dots */
+@keyframes dotRipple {
+  0%, 100% {
+    opacity: 0.4;
+    r: 1.5;
+  }
+  50% {
+    opacity: 0.8;
+    r: 2;
+  }
+}
+
+/* Ripple overlay for additional wave effect */
+.rippleOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 30%,
+    var(--cream) 70%,
+    var(--cream) 100%
+  );
+  animation: ripplePulse 6s ease-in-out infinite;
+}
+
+@keyframes ripplePulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+  
+  .rippleOverlay {
+    animation: none;
+  }
+  
+  .dotPattern {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,81 @@
+.backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  
+  /* 3D effect matching site style */
+  box-shadow: 
+    -3px 3px 0 var(--yellow-dark),
+    -6px 6px 0 var(--shadow-color);
+  
+  /* Initial hidden state */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.backToTop:hover {
+  background: var(--yellow);
+  transform: translate(2px, -2px);
+  box-shadow: 
+    -5px 5px 0 var(--yellow-dark),
+    -8px 8px 0 var(--shadow-color);
+}
+
+.backToTop:active {
+  transform: translate(0, 0);
+  box-shadow: 
+    -2px 2px 0 var(--yellow-dark);
+}
+
+.backToTop svg {
+  transition: transform 0.2s ease;
+}
+
+.backToTop:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .backToTop {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .backToTop {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+  
+  .backToTop.visible {
+    transform: none;
+  }
+  
+  .backToTop:hover {
+    transform: none;
+  }
+}

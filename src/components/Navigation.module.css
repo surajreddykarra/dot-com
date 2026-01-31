@@ -1,6 +1,24 @@
 .nav {
   padding: 2rem 0;
   margin-bottom: 3rem;
+  transition: all 0.3s ease;
+}
+
+/* Scrolled state - subtle effect while staying transparent */
+.navScrolled {
+  padding: 1.5rem 0;
+}
+
+.navScrolled .navTitle {
+  text-shadow: 
+    -1px 1px 0 var(--yellow),
+    -2px 2px 0 var(--yellow-dark);
+}
+
+.navScrolled .navLink {
+  box-shadow: 
+    -2px 2px 0 var(--yellow-dark),
+    -4px 4px 0 var(--shadow-color);
 }
 
 .navHeader {

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import PageCounter from '@/components/PageCounter';
+import AnimatedBackground from '@/components/AnimatedBackground';
+import BackToTop from '@/components/BackToTop';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -19,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AnimatedBackground />
         <div className="book-page">
           <Navigation />
           <main>{children}</main>
           <PageCounter />
         </div>
+        <BackToTop />
       </body>
     </html>
   );
