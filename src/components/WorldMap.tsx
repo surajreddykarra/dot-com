@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import { Tooltip } from "react-tooltip";
-import { visitedCountries, getCountryColor, getStatusLabel } from "@/lib/travel-data";
+import { visitedCountries, getCountryColor, getStatusLabel } from "@/data";
 import styles from "./WorldMap.module.css";
 
 // Using a local TopoJSON file that uses ISO 3166-1 alpha-3 codes for IDs
